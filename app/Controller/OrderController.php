@@ -2,6 +2,7 @@
 declare(strict_types=1);
 
 namespace App\Controller;
+
 use App\Traits\WeightedRoundRobin\WeightedRoundRobin;
 use Hyperf\Di\Annotation\Inject;
 use App\Logic\Order\OrderHandler;
@@ -10,10 +11,17 @@ class OrderController extends AbstractController
 {
 
     /**
+     * @Inject
+     * @var orderHandler
+     */
+    public $orderHandler;
+
+    /**
      * @return array
      * @throws \throwable
      */
-    public function create() {
+    public function create()
+    {
         return $this->orderHandler->create();
     }
 
@@ -21,7 +29,8 @@ class OrderController extends AbstractController
      * @return array
      * @throws \throwable
      */
-    public function get() {
+    public function get()
+    {
         return $this->orderHandler->get();
     }
 }
